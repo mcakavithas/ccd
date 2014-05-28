@@ -1,0 +1,19 @@
+@import "bootstrap";
+
+$grayMediumLight: #eaeaea;
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  padding-top: 60px;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}

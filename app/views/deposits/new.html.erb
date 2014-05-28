@@ -1,0 +1,77 @@
+<style>
+
+.alert,.alert_info,.alerth5{
+background-color: rgb(217,237,247);
+/*border-color: rgb(188,232,241);*/
+color: #000;
+/*padding: 8px 20px 8px 14px;*/
+margin-bottom: 20px;
+text-shadow: 0pt 1px 0pt rgba(255, 255, 255, 0.5);
+/*border: 1px solid rgb(251, 238, 213);*/
+border-radius: 4px 4px 4px 4px;
+
+}
+
+</style>
+
+
+
+<%= form_for @deposit, :class => "form-horizontal", :html => {:multipart => true} do |f| %>
+  
+ <% if @deposit.errors.any? %>
+<h4>Deposit not added</h4>
+<ul>
+<% @deposit.errors.full_messages.each do |error| %>
+<li><%= error %></li>
+<% end %>
+</ul>
+<% end %>
+
+
+<div class='container'>
+
+<div class="alert alert_info", width = "100px">
+
+<div align = "center">CCD Interest Calculator</div>
+<br/>
+
+<table align="center">
+<tr>
+<td>
+	<%= f.label :Initial_Deposit_Amount %>
+</td>
+<td>:</td>
+<td>
+	<%= f.text_field :amount %>
+</td>
+</tr>
+<tr>
+<td>
+	<%= f.label :Rate_of_interest %>
+</td>
+<td>:</td>
+<td>
+<%= f.select(:roi, options_for_select([['9%', 0.09], ['9.5%', 0.095], ['10%', 0.1], ['10.5%', 0.105], ['11%', 0.11], ['11.5%', 0.115], ['12.5%', 0.125]]))%>
+</td>
+</tr>
+<tr>
+<td>
+	<%= f.label :Periods %>
+</td>
+<td>:</td>
+<td>
+	<%= f.select(:periods, options_for_select([['6Months', 0.5], ['1year', 1], ['2years',2], ['3years', 3], ['4years', 4], ['5years', 5]]))%>
+</td>
+</tr>
+
+
+<tr>
+	<td clospan= "3" align = "center">
+     <%= f.submit "Calculate", class: "btn btn-primary" %>
+      </td>
+</tr>
+</table>
+    <% end %>
+
+  </div>
+

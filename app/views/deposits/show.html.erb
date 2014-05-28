@@ -1,0 +1,35 @@
+<script>
+$(document).ready(function(){
+  $("#myModal").click(function(){
+  var $this = $(this);
+  $this.model({container: '#myModal', placement: 'top auto', content:"This file has already been added to the queue."});
+  $this.model('show');
+  setTimeout(function() {$this.model('hide')},3000);
+
+ });
+});
+</script>
+<h5 align = "center">CCD Maturity Details</h5>
+ <div align= "center"><button  class="btn btn-inverse btn-lg" data-toggle="modal" data-target="#myModal">
+  See Matured Value
+</button><%= link_to "Back", deposits_path %>
+</div>
+<div align= "center">
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Maturity details</h4>
+      </div>
+      <div class="modal-body">
+      	<h5><b>Initial deposit Amount:<%= @deposit.amount %></b></h5>
+        <h5><b>No.Of.Years:<%= @deposit.periods %></b></h5>
+        <h5><b>Rate of Interest:<%= @deposit.roi %></b></h5>
+        <h5><b>Maturity Value:<%= @deposit.total %></b></h5>
+      </div>
+      
+    </div>
+  </div>
+</div>
+</div>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  amount: 1
+  roi: 1.5
+  'n': 1
+  periods: 1
+  total: 1
+
+two:
+  amount: 1
+  roi: 1.5
+  'n': 1
+  periods: 1
+  total: 1
