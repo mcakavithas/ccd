@@ -15,8 +15,6 @@ border-radius: 4px 4px 4px 4px;
 </style>
 
 
-
-
 <%= form_for @deposit, :class => "form-horizontal", :html => {:multipart => true} do |f| %>
   
  <% if @deposit.errors.any? %>
@@ -59,13 +57,14 @@ border-radius: 4px 4px 4px 4px;
 
 <tr>
 <td>
-	<%= f.label :Initial_Deposit_Amount %>
+  <%= f.label :Initial_Deposit_Amount %>
 </td>
 <td>:</td>
 <td>
-	<%= f.text_field :amount, :placeholder => '0.00' %><span class="WebRupee">&#x20B9;</span>
+  <%= f.text_field :amount, :placeholder => '0.00' %><span class="WebRupee">&#x20B9;</span>
 </td>
 </tr>
+
 
 <tr>
 <td>
@@ -73,7 +72,7 @@ border-radius: 4px 4px 4px 4px;
 </td>
 <td>:</td>
 <td>
-<%= f.select(:roi, options_for_select([['9%', 0.09], ['9.5%', 0.095], ['10%', 0.1], ['10.5%', 0.105], ['11%', 0.11], ['11.5%', 0.115], ['12.5%', 0.125],['11.75%', 0.1175]]))%>
+<%= f.select(:roi, options_for_select([['9%', 0.09], ['9.5%', 0.095], ['10%', 0.1], ['10.5%', 0.105], ['11%', 0.11], ['11.5%', 0.115]]))%>
 </td>
 </tr>
 <tr>
