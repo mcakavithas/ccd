@@ -8,12 +8,14 @@ class Deposit < ActiveRecord::Base
 
 before_save :calculate_interest
 def calculate_interest
-  if self.age <=57
-    self.roi
-  elsif self.age >= 58 && self.age <= 75 && self.periods = 5 
-    self.roi += 0.0025
-  elsif self.age >= 75 && self.periods = 5
-    self.roi += 0.0025
+  if self.age >= 75 && self.periods == 5
+    self.roi += 0.0025 
+  elsif self.age >= 58 && self.age <= 75 && self.periods == 5 
+    self.roi += 0.0025   
+   elsif self.age >= 58 && self.age <= 75 && self.periods == 4
+    self.roi += 0.005   
+   elsif self.age >= 75 && self.periods == 4
+     self.roi += 0.0075
   else
     self.roi
   end
