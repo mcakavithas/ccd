@@ -1,5 +1,4 @@
 <style>
-
 .alert,.alert_info,.alerth5{
 background-color: rgb(217,237,247);
 /*border-color: rgb(188,232,241);*/
@@ -9,115 +8,52 @@ margin-bottom: 20px;
 text-shadow: 0pt 1px 0pt rgba(255, 255, 255, 0.5);
 /*border: 1px solid rgb(251, 238, 213);*/
 border-radius: 4px 4px 4px 4px;
-
 }
-
+table, td, th
+{
+border:1px solid green;
+width: 500;
+}
+th
+{
+background-color:#6D5E66;
+color:white;
+}
 </style>
 
+<div class="hero-unit">
+<div align="right">
+<%= link_to "ADD NEW", new_deposit_path, class: "btn btn-success" %>
+</div>
 
-<%= form_for @deposit, :class => "form-horizontal", :html => {:multipart => true} do |f| %>
-  
- <% if @deposit.errors.any? %>
-<h4>Deposit not added</h4>
-<ul>
-<% @deposit.errors.full_messages.each do |error| %>
-<li><%= error %></li>
-<% end %>
-</ul>
-<% end %>
-
-
-<div class='container'>
-
-<div class="alert alert_info", width = "100px">
-
-<div align = "center">CCD Interest Calculator</div>
-<br/>
-
-<table align="center">
-<tr>
-<td>
-  <%= f.label :Name %>
-</td>
-<td>:</td>
-<td>
-  <%= f.text_field :name, :placeholder => 'Customer Name' %>
-</td>
-</tr>
-
-<tr>
-<td>
-  <%= f.label :Date_of_birth %>
-</td>
-<td>:</td>
-<td>
-   <%= f.date_select :dob, { :include_blank => true, :start_year => 1900, :end_year => 2014 } %>
-</td>
-</tr>
-
-<tr>
-<td>
-  <%= f.label :Initial_Deposit_Amount %>
-</td>
-<td>:</td>
-<td>
-  <%= f.text_field :amount, :placeholder => '0.00' %><span class="WebRupee">&#x20B9;</span>
-</td>
-</tr>
-
-
-<tr>
-<td>
-	<%= f.label :Rate_of_interest %>
-</td>
-<td>:</td>
-<td>
-<%= f.select(:roi, options_for_select([['9%', 0.09], ['9.5%', 0.095], ['10%', 0.1], ['10.5%', 0.105], ['11%', 0.11], ['11.5%', 0.115]]))%>
-</td>
-</tr>
-<tr>
-<td>
-	<%= f.label :Periods %>
-</td>
-<td>:</td>
-<td>
-	<%= f.select(:periods, options_for_select([['6Months', 0.5], ['1year', 1.00], ['2years',2.00], ['3years', 3.00], ['4years', 4.00], ['5years', 5.00]]))%>
-</td>
-</tr>
-
-<tr>
-	<td clospan= "3" align = "center">
-     <%= f.submit "Calculate", class: "btn btn-primary" %>
-      </td>
-</tr>
-</table>
-    <% end %>
-
-  </div>
-
-<table class="table table-hover">
+<div>
+<br>
+<table class="table table-hover" cellpadding = "5px" cellspacing = "5px" >
 	<thead>
 	<tr >
     <th>Initial Deposit Amount</th>
     <th>Rate of Interest</th>
 	  <th>Periods</th>
+    <th>Name</th>
+    <th>Age</th>
 	  <th></th>
+    <th></th>
 	</tr>
-</thead>
-    
+</thead>    
 <% @deposits.each do |deposit| %>
 <tbody>
     <tr>
       <td><%= deposit.amount %></td>
       <td><%= deposit.roi %></td>
       <td><%= deposit.periods %></td>
+      <td><%= deposit.name %></td>
+      <td><%= deposit.age %></td>
       <td><%= link_to "Maturity Details", deposit_path(deposit), class: "btn btn-danger" %></td>
-    </tr>
+      <td>
+        <%= link_to "Delete", deposit_path(deposit), class: "btn btn-inverse", method: :delete, confirm: "Are You Sure?" %>
+      </td>
+  </tr>
 </tbody>
   <% end %>
 </table>
-
-
-
-
-
+</div>

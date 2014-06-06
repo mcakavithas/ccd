@@ -1,14 +1,7 @@
 Ccddeposit::Application.routes.draw do
 resources :deposits
 
-  get "deposits/new"
-
-  get "deposits/create"
-
-  get "deposits/index"
-
-  get "deposits/show"
-
+  
  
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -59,7 +52,7 @@ resources :deposits
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-   root :to => 'deposits#index'
+   root :to => 'deposits#new'
 
   # See how all your routes lay out with "rake routes"
 
